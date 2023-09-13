@@ -1,11 +1,14 @@
-from PIL import Image, ImageOps, ImageEnhance
+from typing import Literal, Optional
+
+from PIL import Image, ImageOps, ImageEnhance, ImageDraw
+from pydantic import Field
 
 from invokeai.app.models.image import ImageCategory, ResourceOrigin
 from invokeai.app.invocations.baseinvocation import (
     BaseInvocation,
-    InputField,
     invocation,
     InvocationContext,
+    InputField,
 )
 from invokeai.app.invocations.primitives import (
     ImageField,
@@ -17,6 +20,7 @@ from invokeai.app.invocations.primitives import (
     title="Enhance Image",
     tags=["enhance", "image"],
     category="image",
+    version="1.0.0",    
 )
 class ImageEnhanceInvocation(BaseInvocation):
     """Applies processing from PIL's ImageEnhance module."""
